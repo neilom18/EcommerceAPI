@@ -1,0 +1,33 @@
+﻿using System;
+
+namespace EcommerceAPI.DTOs
+{
+    public class CartaoCreditoDTO : Validator
+    {
+        public string CVV { get;set; }
+        public string Numero { get;set; }
+        public string Titular { get;set; }
+        public decimal Limite { get;set; }
+        public DateTime Validade { get;set; }
+        public override void Validar()
+        {
+            Valido = true;
+            if (CVV.Length != 3)
+            {
+                Valido = false;
+            }
+            if (Numero.Length != 9)
+            {
+                Valido = false;
+            }
+            if (Limite <= 0)
+            {
+                Valido = false;
+            }
+            if (DateTime.Now >= Validade)
+            {
+                Valido = false;
+            }
+        }
+    }
+}
