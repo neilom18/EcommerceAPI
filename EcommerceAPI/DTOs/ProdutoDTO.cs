@@ -10,6 +10,7 @@ namespace EcommerceAPI.DTOs
         public decimal Preco { get; set; }
         public override void Validar()
         {
+            Valido = true;
             if(string.IsNullOrEmpty(Nome) || Nome.Length > 150)
             {
                 Valido = false;
@@ -22,7 +23,6 @@ namespace EcommerceAPI.DTOs
             {
                 Valido = false;
             }
-            Valido = true;
         }
     }
 }

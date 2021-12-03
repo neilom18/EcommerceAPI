@@ -16,6 +16,8 @@ namespace EcommerceAPI.Servicos
 
         public Produto Cadastrar(Produto produto)
         {
+            if (_produto.Contains(produto))
+                throw new ArgumentException("Não é possivel cadastrar dois produtos iguais!");
             _produto.Add(produto);
             return produto;
         }

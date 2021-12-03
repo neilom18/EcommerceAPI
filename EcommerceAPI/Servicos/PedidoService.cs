@@ -32,6 +32,8 @@ namespace EcommerceAPI.Servicos
         public Pedido AdicionarItem(Guid id, ItemPedido item)
         {
             var pedido = _pedidos.Where(p => p.Id == id).SingleOrDefault();
+            if (pedido.ItemPedido.Where(x => x.Produto.Id == item.Produto.Id).FirstOrDefault() != null)
+                throw new ArgumentException("Esse item já está no carrinho!");
             if (pedido is null)
                 throw new ArgumentException("Pedido não existe!");
             var prod = _produtos.Get(item.Produto.Id);

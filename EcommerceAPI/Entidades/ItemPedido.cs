@@ -1,4 +1,5 @@
 ﻿using EcommerceAPI.DTOs;
+using System;
 
 namespace EcommerceAPI.Entidades
 {
@@ -7,8 +8,10 @@ namespace EcommerceAPI.Entidades
         public Produto Produto { get;private set; }
         public decimal Preco { get;private set; }
         public int Quantidade { get;private set; }
+        public Guid Id { get; set; }
         public ItemPedido(Produto produto, int quantidade)
         {
+            Id = Guid.NewGuid();
             Produto = produto;
             Quantidade = quantidade;
         }
